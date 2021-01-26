@@ -7,7 +7,8 @@
     "start": "node app.js",
     "dev": "nodemon -e js app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seed/db_seed.js"
+    "seed": "node seed/db_seed.js",
+    "deploy": "git push heroku master"
   },
   "author": "",
   "license": "ISC",

@@ -4,7 +4,12 @@ exports.validationErrorHadling = (req, res, next) => {
   // Finds the validation errors in this request and wraps them in an object with handy functions
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+
+    let errStr = errors.array().map(error => {
+      return `{error.param}: {error.msg}`
+    })
+
+    return next(errStr)
   }
   next();
 };
