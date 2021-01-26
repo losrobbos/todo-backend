@@ -6,7 +6,7 @@ exports.validationErrorHadling = (req, res, next) => {
   if (!errors.isEmpty()) {
 
     let errStr = errors.array().map(error => {
-      return `{error.param}: {error.msg}`
+      return `${error.param}: ${error.msg}`
     })
 
     return next(errStr)
