@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const cookieParser = require('cookie-parser');
 require("./config/load")
 
@@ -24,7 +24,7 @@ const todosRouter = require('./routes/todos');
 
 app.listen(port, () => {
   console.log(
-    `Record API listening at http://localhost:${port}`
+    `API listening at port ${port}`
   );
 });
 
