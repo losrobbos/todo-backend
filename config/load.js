@@ -18,5 +18,5 @@ else {
 // load env file content and store key-value pairs in process.env
 let envPath = path.join(__dirname, envFilename)
 let config = dotenv.config({ path: envPath })
-console.log(config)
-console.log(__dirname)
+
+module.exports = config
