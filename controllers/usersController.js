@@ -45,7 +45,6 @@ exports.loginUser = async (req, res, next) => {
   
   //before we send the response back we need to create a token
   const token = user.generateToken();
-
   res.send({ user, token });
 }
 
@@ -53,13 +52,11 @@ exports.addUser = async (req, res, next) => {
   try {
     const user = new User(req.body);
     user.hashPassword()
-    const data = await user.save();
-    const exp = new Date(Date.now() + 900000); //15 mins = 900 seconds = 900.000
+    const userSignedUp = await user.save();
 
     //before we send the response back we need to create a token
     const token = user.generateToken();
-
-    res.send(data);
+    res.send({ user: userSignedUp, token });
   } catch (error) {
     next(error);
   }
