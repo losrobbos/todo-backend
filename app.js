@@ -63,8 +63,6 @@ app.use((err, req, res, next) => {
 
   // this is the error response for our users
   res.status(err.status || 500).send({
-    error: {
-      message: err.message || err
-    },
+    error: err.message || err
   });
 });
