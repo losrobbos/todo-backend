@@ -34,10 +34,18 @@ exports.getToDo = async (req, res, next) => {
 };
 
 exports.addToDo = async (req, res, next) => {
+
+  let todoData = {...req.body}
+
+  // add user ID from token
+  if(!todoData.user) {
+    todoData.user = req.user._id
+  }
+
   try {
-    const todo = new ToDo(req.body);
-    const data = await todo.save();
-    res.send(data);
+    const todo = new ToDo(todoData);
+    const todoDb = await todo.save();
+    res.send(todoDb);
   } catch (error) {
     next(error);
   }
@@ -59,7 +67,8 @@ exports.updateToDo = async (req, res, next) => {
       );
 
     res.send(todo);
-  } catch (error) {
+  } 
+  catch (error) {
     next(error);
   }
 };
