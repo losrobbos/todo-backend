@@ -28,11 +28,14 @@ Testing (without a Frontend):
   - you need to provide the token in your request in a header named "Auth".
   - e.g. "Auth": "eyA163485585eggj"
 
-Once it works locally: 
+Once it works locally - prepare deployment: 
 - Create a file .env for your production data (=> fill in your MongoDB Atlas URL)
-- Run your seed script in this way: `NODE_ENV=production npm run seed`
-- Check if the users & todos were filled into the central DB
-- In case you wanna deploy to heroku: "heroku create"
+- Put the .env in the folder config
+- Run your seed script in this way: `NODE_ENV=production npm run seed` 
+  - this should write now some records into your CENTRAL database (so Atlas likely)
+- Check if the users & todos were filled into the central DB, by looking into Atlas or Compass
+- In case you wanna deploy to heroku: run "heroku create" in the app folder
   - For Heroku you need to set the environment variables online - in the project page
+  - For Deployment: "git push heroku master"
 - In case you deploy to vercel: Just run "vercel"
 
