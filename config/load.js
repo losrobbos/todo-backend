@@ -13,10 +13,10 @@ if(process.env.NODE_ENV == "production") {
   // no environment set? assume "development environment" => load local configuration 
 else {
   envFilename += '.env.dev'
+}
+
   // load env file content and store key-value pairs in process.env
   let envPath = path.join(__dirname, envFilename)
   let config = dotenv.config({ path: envPath })
-}
-
 
 // module.exports = config
