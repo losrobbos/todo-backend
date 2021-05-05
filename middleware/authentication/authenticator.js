@@ -1,7 +1,7 @@
 const User = require('../../models/User');
 
 exports.auth = async (req, res, next) => {
-    // take the token  req.cookies.auth
+    // req.cookies.auth => cookies are not available in aReact native app. So look in request HEADERS instead....
     const token = req.headers.auth
 
     if(!token) {
