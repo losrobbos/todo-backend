@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 5000;
-const cookieParser = require('cookie-parser');
 require("./config/load")
 
 
@@ -29,13 +28,12 @@ app.listen(port, () => {
 });
 
 /** MIDDLEWARES */
-app.use(express.json({ extended: false }));
+app.use(express.json());
 app.use(cors());
-app.use(cookieParser());
 
 // CONTROLLER for the HOME ROUTE
 const sayHello = (req, res) => {
-  res.send({ welcome: 'Welcome to the Record Store API' });
+  res.json({ welcome: 'Welcome to the TODO API' });
 };
 
 /** HOME ROUTE */
@@ -57,8 +55,8 @@ app.use((req, res, next) => {
 // GENERIC ERROR HANDLER MIDDLEWARE OF EXPRESS
 // - this will kick in on every error that our CODE produced!
 app.use((err, req, res, next) => {
-  // log the WHOLE ERROR information just to US INTERNALLY
-  // including the line numbers where the error happened, so we can debug easily
+  // log the WHOLE ERROR information just to the terminal (= so internally to us only)
+  // this way we get the line numbers where any error has happened, so we can debug "easily"
   console.log(err);
 
   // this is the error response for our users

@@ -15,8 +15,10 @@ else {
   envFilename += '.env.dev'
 }
 
-  // load env file content and store key-value pairs in process.env
-  let envPath = path.join(__dirname, envFilename)
-  let config = dotenv.config({ path: envPath })
+// load env file content and store key-value pairs in process.env
+let envPath = path.join(__dirname, envFilename)
+let config = dotenv.config({ path: envPath })
+
+console.log({ NODE_ENV: process.env.NODE_ENV || "development", ...config.parsed})
 
 // module.exports = config
